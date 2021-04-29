@@ -1,10 +1,21 @@
---- 
-title_meta  : Chapter 6
-title       : Lists
-description : Lists, as opposed to vectors, can hold components of different types, just like your to-do list at home or at work. This intro to R chapter will teach you how to create, name and subset these lists.
+---
+title_meta: Chapter 6
+title: Lists
+description: >-
+  As opposed to vectors, lists can hold components of different types, just as
+  your to-do lists can contain different categories of tasks. This chapter will
+  teach you how to create, name, and subset these lists.
+---
 
---- type:NormalExercise xp:100 skills:1 key:2afcdb6a76ec91bf266de9b2ac295d844d7bb004
 ## Lists, why would you need them?
+
+```yaml
+type: NormalExercise
+key: 2afcdb6a76ec91bf266de9b2ac295d844d7bb004
+xp: 100
+skills:
+  - 1
+```
 
 Congratulations! At this point in the course you are already familiar with:
 
@@ -14,71 +25,87 @@ Congratulations! At this point in the course you are already familiar with:
 
 Pretty sweet for an R newbie, right? ;-)
 
-*** =instructions
-Click 'Submit Answer' to start learning everything about lists!
+`@instructions`
+Submit the answer to start learning everything about lists!
 
-*** =hint
-Just click the 'Submit Answer' button.
+`@hint`
+Just submit the answer!
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 # no pec
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
-# Just click the 'Submit Answer' button.
+# Just submit the answer
 ```
 
-*** =solution
+`@solution`
 ```{r}
-# Just click the 'Submit Answer' button.
+# Just submit the answer.
 ```
 
-*** =sct
+`@sct`
 ```{r}
 success_msg("Ready, set, go! Continue to the next exercise.")
 ```
 
+---
 
---- type:NormalExercise xp:100 skills:1 key:68f93c5c504616bd18876da52cd123277d56fc8b
 ## Lists, why would you need them? (2)
 
-A **list** in R is similar to your to-do list at work or school: the different items on that list most likely differ in length, characteristic, type of activity that has to do be done, ... 
+```yaml
+type: NormalExercise
+key: 68f93c5c504616bd18876da52cd123277d56fc8b
+xp: 100
+skills:
+  - 1
+```
+
+A **list** in R is similar to your to-do list at work or school: the different items on that list most likely differ in length, characteristic, and type of activity that has to be done. 
 
 A list in R allows you to gather a variety of objects under one name (that is, the name of the list) in an ordered way. These objects can be matrices, vectors, data frames, even other lists, etc. It is not even required that these objects are related to each other in any way.
 
 You could say that a list is some kind super data type: you can store practically any piece of information in it!
 
-*** =instructions
-Click 'Submit Answer' to start the first exercise on lists.
+`@instructions`
+Just submit the answer to start the first exercise on lists.
 
-*** =hint
-Click 'Submit Answer' to start the first exercise on lists.
+`@hint`
+Submit the answer to start the first exercise on lists.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 # no pec
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
-# Click 'Submit Answer' to start the first exercise on lists.
+# Just submit the answer to start the first exercise on lists.
 ```
 
-*** =solution
+`@solution`
 ```{r}
-# Click 'Submit Answer' to start the first exercise on lists.
+# Just submit the answer to start the first exercise on lists.
 ```
 
-*** =sct
+`@sct`
 ```{r}
 success_msg("Cool. Let's get our hands dirty!")
 ```
 
+---
 
---- type:NormalExercise xp:100 skills:1 key:4beee9cb532c889903218b49b83ab5ef133eac83
 ## Creating a list
+
+```yaml
+type: NormalExercise
+key: 4beee9cb532c889903218b49b83ab5ef133eac83
+xp: 100
+skills:
+  - 1
+```
 
 Let us create our first list! To construct a list you use the function [`list()`](http://www.rdocumentation.org/packages/base/functions/list): 
 
@@ -88,18 +115,18 @@ my_list <- list(comp1, comp2 ...)
 
 The arguments to the list function are the list components. Remember, these components can be matrices, vectors, other lists, ...
 
-*** =instructions
+`@instructions`
 Construct a list, named `my_list`, that contains the variables `my_vector`, `my_matrix` and `my_df` as list components.
 
-*** =hint
+`@hint`
 Use the [`list()`](http://www.rdocumentation.org/packages/base/functions/list) function with `my_vector`, `my_matrix` and `my_df` as arguments separated by a comma.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 # no pec
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Vector with numerics from 1 up to 10
 my_vector <- 1:10 
@@ -111,10 +138,10 @@ my_matrix <- matrix(1:9, ncol = 3)
 my_df <- mtcars[1:10,]
 
 # Construct list with these different elements:
-my_list <- 
+my_list <-
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Vector with numerics from 1 up to 10
 my_vector <- 1:10 
@@ -129,20 +156,31 @@ my_df <- mtcars[1:10,]
 my_list <- list(my_vector, my_matrix, my_df)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg = "Do not remove or change the definition of the variables `my_vector`, `my_matrix` or `my_df`!"
-test_object("my_vector", undefined_msg = msg, incorrect_msg = msg)
-test_object("my_matrix", undefined_msg = msg, incorrect_msg = msg)
-test_object("my_df", undefined_msg = msg, incorrect_msg = msg)
-test_object("my_list",
-            incorrect_msg = "It looks like `my_list` does not contain the correct elements. Make sure to pass the variables `my_vector`, `my_matrix` and `my_df` to the `list()` function, separated by commas, in this order.")
+ex() %>% check_object("my_vector", undefined_msg = msg) %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_object("my_matrix", undefined_msg = msg) %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_object("my_df", undefined_msg = msg) %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_object("my_list") %>% check_equal(incorrect_msg = "It looks like `my_list` does not contain the correct elements. Make sure to pass the variables `my_vector`, `my_matrix` and `my_df` to the `list()` function, separated by commas, in this order.")
+
 success_msg("Wonderful! Head over to the next exercise.")
 ```
 
+---
 
---- type:NormalExercise xp:100 skills:1 key:89dd0126568b1ff5a84033c571907a8a282245e4
 ## Creating a named list
+
+```yaml
+type: NormalExercise
+key: 89dd0126568b1ff5a84033c571907a8a282245e4
+xp: 100
+skills:
+  - 1
+```
 
 Well done, you're on a roll!
 
@@ -160,23 +198,23 @@ my_list <- list(your_comp1, your_comp2)
 names(my_list) <- c("name1", "name2")
 ```
 
-*** =instructions
+`@instructions`
 - Change the code of the previous exercise (see editor) by adding names to the components. Use for `my_vector` the name `vec`, for `my_matrix` the name `mat` and for `my_df` the name `df`. 
 - Print out `my_list` so you can inspect the output.
 
-*** =hint
+`@hint`
 The first method of assigning names to your list components is the easiest. It starts like this: 
 ```
 my_list <- list(vec = my_vector)
 ```
 Add the other two components in a similar fashion.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 # no pec
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Vector with numerics from 1 up to 10
 my_vector <- 1:10 
@@ -191,10 +229,9 @@ my_df <- mtcars[1:10,]
 my_list <- list(my_vector, my_matrix, my_df)
 
 # Print out my_list
-
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Vector with numerics from 1 up to 10
 my_vector <- 1:10 
@@ -212,41 +249,53 @@ my_list <- list(vec = my_vector, mat = my_matrix, df = my_df)
 my_list
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg = "Do not remove or change the definiton of the variables `my_vector`, `my_matrix` or `my_df`!"
-test_object("my_vector", undefined_msg = msg, incorrect_msg = msg)
-test_object("my_matrix", undefined_msg = msg, incorrect_msg = msg)
-test_object("my_df", undefined_msg = msg, incorrect_msg = msg)
-test_object("my_list",
-            incorrect_msg = "It looks like `my_list` does not contain the correct elements.")
-test_object("my_list", eq_condition = "equal",
-            incorrect_msg = "It looks like `my_list` does not contain the correct naming for the components. Make sure you use the names `vec`, `mat` and `df`, respectively. Check out the hint if you're struggling.");
-test_output_contains("my_list", incorrect_msg = "Don't forget to print `my_list` to the console! Simply add `my_list` on a new line in the editor.")
+ex() %>% check_object("my_vector", undefined_msg = msg) %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_object("my_matrix", undefined_msg = msg) %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_object("my_df", undefined_msg = msg) %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_object("my_list") %>% check_equal(incorrect_msg = "It looks like `my_list` does not contain the correct elements.")
+
+ex() %>% check_object("my_list") %>% check_equal(eq_condition = "equal",incorrect_msg = "It looks like `my_list` does not contain the correct naming for the components. Make sure you use the names `vec`, `mat` and `df`, respectively. Check out the hint if you're struggling.")
+
+ex() %>% check_output_expr("my_list", missing_msg = "Don't forget to print `my_list` to the console! Simply add `my_list` on a new line in the editor.")
+
 success_msg("Great! Not only do you know how to construct lists now, you can also name them; a skill that will prove most useful in practice. Continue to the next exercise.")
 ```
 
+---
 
---- type:NormalExercise xp:100 skills:1 key:19fd17cc792ef870c1558b3a9bae08c1d1e3acae
 ## Creating a named list (2)
+
+```yaml
+type: NormalExercise
+key: 19fd17cc792ef870c1558b3a9bae08c1d1e3acae
+xp: 100
+skills:
+  - 1
+```
 
 Being a huge movie fan (remember your job at LucasFilms), you decide to start storing information on good movies with the help of lists. 
 
 Start by creating a list for the movie "The Shining". We have already created the variables `mov`, `act` and `rev` in your R workspace. Feel free to check them out in the console.
 
-*** =instructions
-Complete the code on the right to create `shining_list`; it contains three elements:
+`@instructions`
+Complete the code in the editor to create `shining_list`; it contains three elements:
 
-- moviename: a character string with the movie title (stored in `mov`)
-- actors: a vector with the main actors' names (stored in `act`)
-- reviews: a data frame that contains some reviews (stored in `rev`)
+- `moviename`: a character string with the movie title (stored in `mov`)
+- `actors`: a vector with the main actors' names (stored in `act`)
+- `reviews`: a data frame that contains some reviews (stored in `rev`)
 
-Do not forget to name the list components accordingly (names are moviename, actors and reviews).
+Do not forget to name the list components accordingly (names are `moviename`, `actors` and `reviews`).
 
-*** =hint
+`@hint`
 `shining_list <- list(moviename = mov)` is only part of the solution; it's your job to also add `act` and `rev` to the list, with the appropriate names.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 mov <- "The Shining"
 act      <- c("Jack Nicholson","Shelley Duvall","Danny Lloyd","Scatman Crothers","Barry Nelson")
@@ -257,7 +306,7 @@ rev     <- data.frame(scores, sources, comments)
 rm(scores, sources, comments)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # The variables mov, act and rev are available
 
@@ -265,7 +314,7 @@ rm(scores, sources, comments)
 shining_list <- list(moviename = mov)
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # The variables mov, act and rev are available
 
@@ -273,20 +322,33 @@ shining_list <- list(moviename = mov)
 shining_list <- list(moviename = mov, actors = act, reviews = rev)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg = "Do not remove or change the definition of the pre-set variables!"
-lapply(c("mov", "rev", "act"), test_object, undefined_msg = msg, incorrect_msg = msg)
-test_object("shining_list",
-            incorrect_msg = "It looks like `shining_list` does not contain the correct elements: the first element should be `mov`, the second element `act`, and the third `rev`.")
-test_object("shining_list", eq_condition = "equal",
-            incorrect_msg = "It looks like `shining_list` does not contain the correct naming for the components: name the first element `moviename`, the second element `actors`, and the third element `reviews`.");
+ex()  %>% check_object("mov", undefined_msg = msg)  %>% check_equal(incorrect_msg = msg)
+
+ex()  %>% check_object("rev", undefined_msg = msg)  %>% check_equal(incorrect_msg = msg)
+
+ex()  %>% check_object("act", undefined_msg = msg)  %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_object("shining_list") %>% check_equal(incorrect_msg = "It looks like `shining_list` does not contain the correct elements: the first element should be `mov`, the second element `act`, and the third `rev`.")
+
+ex() %>% check_object("shining_list") %>% check_equal(eq_condition = "equal",incorrect_msg = "It looks like `shining_list` does not contain the correct naming for the components: name the first element `moviename`, the second element `actors`, and the third element `reviews`.")
+
 success_msg("Wonderful! You now know how to construct and name lists. As in the previous chapters, let's look at how to select elements for lists. Head over to the next exercise")
 ```
 
+---
 
---- type:NormalExercise xp:100 skills:1 key:1ef3278944562caef64b9927dd2ddb6ee52334cd
 ## Selecting elements from a list
+
+```yaml
+type: NormalExercise
+key: 1ef3278944562caef64b9927dd2ddb6ee52334cd
+xp: 100
+skills:
+  - 1
+```
 
 Your list will often be built out of numerous elements and components. Therefore, getting a single element, multiple elements, or a component out of it is not always straightforward. 
 
@@ -307,20 +369,20 @@ shining_list$reviews
 
 Besides selecting components, you often need to select specific elements out of these components. For example, with `shining_list[[2]][1]` you select from the second component, `actors` (`shining_list[[2]]`), the first element (`[1]`). When you type this in the console, you will see the answer is Jack Nicholson.
 
-*** =instructions
+`@instructions`
 - Select from `shining_list` the vector representing the actors. Simply print out this vector.
 - Select from `shining_list` the second element in the vector representing the actors. Do a printout like before.
 
-*** =hint
+`@hint`
 - To select the vector representing the actors, you can use `$actors`.
 - To select the third element in the vector representing the actors, you use `shining_list$actors[3]`. What needs to change to select the second element?
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_r/shining_list.RData"))
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # shining_list is already pre-loaded in the workspace
 
@@ -328,10 +390,9 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_r/shining_
 
 
 # Print the second element of the vector representing the actors
-
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # shining_list is already pre-loaded in the workspace
 
@@ -342,83 +403,121 @@ shining_list$actors
 shining_list$actors[2]
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg <- "Do not remove or change the definition of `shining_list`, which is pre-loaded in the workspace!"
-test_object("shining_list", undefined_msg = msg, incorrect_msg = msg)
-test_output_contains("shining_list$actors", incorrect_msg = "Have you correctly selected and printed out the vector representing actors? You can use `shining_list$actors`, for example.")
-test_output_contains("shining_list$actors[2]", incorrect_msg = "To select the second actor from the vector representing actors, you should chain your selections: `shining_list$actors` represents the actors, so you can add a `[2]` to select the second element.")
+ex() %>% check_object("shining_list", undefined_msg = msg) %>% check_equal(incorrect_msg = msg)
+
+ex() %>% check_output_expr("shining_list$actors", missing_msg = "Have you correctly selected and printed out the vector representing actors? You can use `shining_list$actors`, for example.")
+
+ex() %>% check_output_expr("shining_list$actors[2]", missing_msg = "To select the second actor from the vector representing actors, you should chain your selections: `shining_list$actors` represents the actors, so you can add a `[2]` to select the second element.")
+
 success_msg("Great! Selecting elements from lists is rather easy isn't it? Continue to the next exercise.")
 ```
 
+---
 
---- type:NormalExercise xp:100 skills:1 key:ca3f7b71504ff93940cf65889d406a58c5b0019c
-## Adding more movie information to the list
+## Creating a new list for another movie
 
-Being proud of your first list, you shared it with the members of your movie hobby club. However, one of the senior members, a guy named M. McDowell, noted that you forgot to add the release year. Given your ambitions to become next year's president of the club, you decide to add this information to the list. 
-
-To conveniently add elements to lists you can use the [`c()`](http://www.rdocumentation.org/packages/base/functions/c) function, that you also used to build vectors:
-
-```
-ext_list <- c(my_list , my_val)
-``` 
-
-This will simply extend the original list, `my_list`, with the component `my_val`. This component gets appended to the end of the list.
-If you want to give the new list item a name, you just add the name as you did before: 
-
-```
-ext_list <- c(my_list, my_name = my_val)
+```yaml
+type: NormalExercise
+key: ce10c83e5b
+xp: 100
 ```
 
-*** =instructions
-- Complete the code below such that an item named `year` is added to the `shining_list` with the value 1980. Assign the result to `shining_list_full`.
-- Finally, have a look at the structure of `shining_list_full` with the [`str()`](http://www.rdocumentation.org/packages/utils/functions/str) function.
+You found reviews of another, more recent, Jack Nicholson movie: The Departed!
 
-*** =hint
-Have a look at the example code in the exercise assignment. Maybe this can help you start:
-```
-shining_list <- c(shining_list, ...)
-```
-You still have to add some code where the three dots are.
+| Scores | Comments               |
+|--------|------------------------|
+| 4.6    | I would watch it again |
+| 5      | Amazing!               |
+| 4.8    | I liked it             |
+| 5      | One of the best movies |
+| 4.2    | Fascinating plot       |
 
-*** =pre_exercise_code
-```{r, eval = FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_r/shining_list.RData"))
-```
+It would be useful to collect together all the pieces of information about the movie, like the title, actors, and reviews into a single variable. Since these pieces of data are different shapes, it is natural to combine them in a list variable.
 
-*** =sample_code
+`movie_title`, containing the title of the movie, and `movie_actors`, containing the names of some of the actors in the movie, are available in your workspace.
 
+`@instructions`
+- Create two vectors, called `scores` and `comments`, that contain the information from the reviews shown in the table.
+- Find the average of the `scores` vector and save it as `avg_review`. 
+- Combine the `scores` and `comments` vectors into a data frame called `reviews_df`. 
+- Create a list, called `departed_list`, that contains the `movie_title`, `movie_actors`, reviews data frame as `reviews_df`, and the average review score as `avg_review`, and print it out.
+
+`@hint`
+- You'll use the `c()` function to create the vectors. 
+- To find the average of a vector, pass the name of the vector to the `mean()` function. 
+- Use the `data.frame()` function to create the `reviews_df` data frame.
+
+`@pre_exercise_code`
 ```{r}
-# shining_list, the list containing movie name, actors and reviews, is pre-loaded in the workspace
-
-# We forgot something; add the year to shining_list
-shining_list_full <- 
-
-# Have a look at shining_list_full
-
+movie_title <- "The Departed"
+movie_actors <- c("Leonardo DiCaprio", "Matt Damon", "Jack Nicholson","Mark Wahlberg","Vera Farmiga", "Martin Sheen")
 ```
 
-*** =solution
-
+`@sample_code`
 ```{r}
-# shining_list, the list containing movie name, actors and reviews, is pre-loaded in the workspace
+# Use the table from the exercise to define the comments and scores vectors
+scores <- c(4.6, 5, 4.8, 5, ___
+comments <- c("I would watch it again", "Amazing!", "I liked it", "One of the best movies", ___ 
 
-# Use c() to add a year to shining_list
-shining_list_full <- c(shining_list, year = 1980)
+# Save the average of the scores vector as avg_review  
 
-# Have a look at shining_list_full
-str(shining_list_full)
+
+# Combine scores and comments into the reviews_df data frame
+
+
+# Create and print out a list, called departed_list
+
 ```
 
-*** =sct
+`@solution`
 ```{r}
-msg = "Do not remove or change the definition of `shining_list`, which is pre-loaded in the workspace!"
-test_object("shining_list", undefined_msg = msg, incorrect_msg = msg)
-test_object("shining_list_full", eq_condition = "equal",
-            incorrect_msg = paste("Have you correctly extended `shining_list` with an element named `year`,",
-                                  "whose value is 1980? You can use `c(shining_list, year = 1980)`"))
-test_function("str", "object", incorrect_msg = "Don't forget to display the structure of `shining_list_full` with `str()`.")
-success_msg("Great! This was the last exercise on R lists! You now have a solid basis in the R programming language, but there's so much more to learn. Check out all the other DataCamp courses and become a true data science expert!")
+# Use the table from the exercise to define the comments and scores vectors
+scores <- c(4.6, 5, 4.8, 5, 4.2)
+comments <- c("I would watch it again", "Amazing!", "I liked it", "One of the best movies", "Fascinating plot")
+
+# Save the average of the scores vector as avg_review 
+avg_review <- mean(scores)
+
+# Combine scores and comments into the reviews_df data frame
+reviews_df <- data.frame(scores, comments)
+
+# Create and print out a list, called departed_list
+departed_list <- list(movie_title, movie_actors, reviews_df, avg_review)
+departed_list
 ```
 
+`@sct`
+```{r}
+msg <- "Do not change or remove the preloaded objects."
 
+ex() %>% check_object("movie_title") %>% check_equal(eq_condition = "equal", incorrect_msg = msg)
+ex() %>% check_object("movie_actors")  %>% check_equal(eq_condition = "equal", incorrect_msg = msg)
+ex() %>% check_object("scores") %>% check_equal(eq_condition = "equal", incorrect_msg = "Did you create the `scores` vector correctly?")
+ex() %>% check_object("comments") %>% check_equal(eq_condition = "equal", incorrect_msg = "Did you create the `comments` vector correctly?")
+ex() %>% check_correct(
+  check_object(.,"avg_review") %>% check_equal(eq_condition = "equal", incorrect_msg = "Did you create the `avg_review` object correctly?"),
+  check_function(.,"mean") %>% check_arg("x") %>% check_equal()
+)
+ex() %>% check_correct(
+  check_object(.,"reviews_df") %>% check_equal(eq_condition = "equal", incorrect_msg = "Did you create `reviews_df` correctly?"),
+  check_function(.,"data.frame") %>% {
+    check_arg(.,"..1") %>% check_equal()
+    check_arg(.,"..2") %>% check_equal()
+  }
+)
+ex() %>% check_correct(
+  check_object(.,"departed_list") %>% check_equal(eq_condition = "equal", incorrect_msg = "Did you create `departed_list` correctly?"),
+  check_function(.,"list") %>% {
+    check_arg(.,"..1") %>% check_equal()
+    check_arg(.,"..2") %>% check_equal()
+    check_arg(.,"..3") %>% check_equal()
+    check_arg(.,"..4") %>% check_equal()
+  }
+)
+ex() %>% check_output_expr("departed_list", missing_msg = "Did you print the `departed_list`?")
+
+success_msg("Good work! You successfully created another list of movie information, and combined different components into a single list. Congratulations on finishing the course!")
+```
